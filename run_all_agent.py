@@ -65,8 +65,6 @@ def main(env_name, fam):
 
     for load in loadfiles:
         if device == "cuda":
-            if load != "":
-                print(load + "preset10000000.pt")
             SlurmExperiment(
                 agents,
                 env,
