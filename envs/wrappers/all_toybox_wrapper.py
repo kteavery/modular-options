@@ -14,9 +14,9 @@ from all.environments.atari_wrappers import (
     WarpFrame,
     LifeLostEnv,
 )
-#from envs.wrappers.amidar.interventions.reset_wrapper import (
-#    AmidarResetWrapper,
-#)
+from envs.wrappers.amidar.reset_wrapper import (
+   AmidarResetWrapper,
+)
 
 
 def passThroughWrapper(env):
