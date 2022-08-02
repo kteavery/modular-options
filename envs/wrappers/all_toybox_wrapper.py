@@ -14,45 +14,13 @@ from all.environments.atari_wrappers import (
     WarpFrame,
     LifeLostEnv,
 )
-from envs.wrappers.space_invaders.interventions.reset_wrapper import (
-    SpaceInvadersResetWrapper,
-)
-from envs.wrappers.breakout.interventions.reset_wrapper import (
-    BreakoutResetWrapper,
-)
-from envs.wrappers.amidar.interventions.reset_wrapper import (
-    AmidarResetWrapper,
-)
+#from envs.wrappers.amidar.interventions.reset_wrapper import (
+#    AmidarResetWrapper,
+#)
 
 
 def passThroughWrapper(env):
     return env
-
-
-def customSpaceInvadersResetWrapper(state_num, intv, lives):
-    class CustomSpaceInvadersResetWrapper(SpaceInvadersResetWrapper):
-        def __init__(self, env):
-            super().__init__(
-                env,
-                state_num=state_num,
-                intv=intv,
-                lives=lives,
-            )
-
-    return CustomSpaceInvadersResetWrapper
-
-
-def customBreakoutResetWrapper(state_num, intv, lives):
-    class CustomBreakoutResetWrapper(BreakoutResetWrapper):
-        def __init__(self, env):
-            super().__init__(
-                env,
-                state_num=state_num,
-                intv=intv,
-                lives=lives,
-            )
-
-    return CustomBreakoutResetWrapper
 
 
 def customAmidarResetWrapper(state_num, intv, lives):
