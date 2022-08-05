@@ -7,6 +7,7 @@ from envs.wrappers.all_toybox_wrapper import (
     ToyboxEnvironment,
     customAmidarResetWrapper,
 )
+from envs.wrappers.amidar import options
 import numpy as np
 from glob import glob
 
@@ -24,8 +25,10 @@ loadfile = False  # replace with specific path if continuing from checkpoint
 
 
 def main(env_name, fam):
+    all_options = None
     if env_name == "Amidar":
         custom_wrapper = customAmidarResetWrapper(0, -1, 3)
+        all_options = options.FillOption
     else:
         raise ValueError(f"Unrecognized env_name: {env_name}")
 
@@ -69,6 +72,7 @@ def main(env_name, fam):
                 loadfile="" if load == "" else load + "preset10000000.pt",
                 sbatch_args={"partition": "gpu"},
                 nodelist=nodelist,
+                options=all_options,
             )
         else:
             run_experiment(
@@ -79,6 +83,7 @@ def main(env_name, fam):
                 logdir=logdir,
                 writer=writer,
                 test_episodes=test_episodes,
+                options=all_options,
             )
 
 
