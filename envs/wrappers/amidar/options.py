@@ -16,21 +16,23 @@ class FillOption:
     def initiate(self):
         """
         To start the option,
-        * Agent must be on a certain unpainted tile (self.start). 
-        * Destination must be unpainted.
-        * All enemies must be 7+ tiles away. 
+        * Agent must be on a certain unpainted (TODO) tile (self.start). 
+        * TODO Destination must be unpainted.
+        * TODO All enemies must be 7+ tiles away. 
         """
         with AmidarIntervention(self.tb) as intervention:
             position = intervention.worldpoint_to_tilepoint(intervention.game.player.position)
-            print(intervention.game.player.position)
-            print(position)
+            # print(intervention.game.player.position)
+            # print(position)
             position_junction = tilepoint_to_junctionpoint(position.tx, position.ty)
+            print("Position:")
             print(position_junction)
             for possible in possible_options:
                 if possible[0] == position_junction:
                     self.start = possible[0]
                     self.destination = possible[1]
                     return (self.start, self.destination)
+            return None
 
 
     def get_action(self):
@@ -45,14 +47,16 @@ class FillOption:
             else:
                 return UP
 
+
     def terminate(self):
         """
         Terminate if 
         * Destination is reached.
-        * An enemy comes within 7 tiles.
+        * TODO An enemy comes within 7 tiles.
         """
         position = intervention.worldpoint_to_tilepoint(intervention.game.player.position)
-        if position == self.destination:
+        position_junction = tilepoint_to_junctionpoint(position.tx, position.ty)
+        if position_junction == self.destination:
             return True
         return False
     
