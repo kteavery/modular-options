@@ -28,7 +28,7 @@ def main(env_name, fam):
     all_options = None
     if env_name == "Amidar":
         custom_wrapper = customAmidarResetWrapper(0, -1, 3)
-        all_options = options.FillOption
+        all_options = options.FillOption()
     else:
         raise ValueError(f"Unrecognized env_name: {env_name}")
 
