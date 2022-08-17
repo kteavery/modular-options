@@ -4,6 +4,9 @@ from toybox.interventions.amidar import AmidarIntervention, Amidar
 
 possible_options = [(25, 217)]
 
+def tilepoint_to_junctionpoint(x, y):
+    return (31-y)*32 + x
+
 class FillOption:
     def __init__(self):
         self.tb = Toybox('amidar')
@@ -19,8 +22,12 @@ class FillOption:
         """
         with AmidarIntervention(self.tb) as intervention:
             position = intervention.worldpoint_to_tilepoint(intervention.game.player.position)
+            print(intervention.game.player.position)
+            print(position)
+            position_junction = tilepoint_to_junctionpoint(position.tx, position.ty)
+            print(position_junction)
             for possible in possible_options:
-                if possible[0] == position:
+                if possible[0] == position_junction:
                     self.start = possible[0]
                     self.destination = possible[1]
                     return (self.start, self.destination)
