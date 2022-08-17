@@ -10,7 +10,7 @@ class FillOption:
         self.start = -1 
         self.destination = -1
     
-    def initiate():
+    def initiate(self):
         """
         To start the option,
         * Agent must be on a certain unpainted tile (self.start). 
@@ -26,7 +26,7 @@ class FillOption:
                     return (self.start, self.destination)
 
 
-    def get_action():
+    def get_action(self):
         if self.start < self.destination: 
             if self.destination-self.start <= 31:
                 return RIGHT
@@ -38,7 +38,7 @@ class FillOption:
             else:
                 return UP
 
-    def terminate():
+    def terminate(self):
         """
         Terminate if 
         * Destination is reached.
