@@ -59,7 +59,6 @@ def main(env_name, fam):
             loadfiles = [loadfile]
     else:
         loadfiles = [""]
-
     for load in loadfiles:
         if device == "cuda":
             SlurmExperiment(
@@ -70,7 +69,7 @@ def main(env_name, fam):
                 logdir=logdir,
                 write_loss=True,
                 loadfile="" if load == "" else load + "preset10000000.pt",
-                sbatch_args={"partition": "gpu"},
+                sbatch_args={"partition": "gpu", "exclude": "ials-gpu018,ials-gpu026"},
                 nodelist=nodelist,
                 options=all_options,
             )
