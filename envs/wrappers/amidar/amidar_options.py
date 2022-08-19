@@ -14,6 +14,7 @@ def json_to_tilepoint(x, y):
     TILE_SIZE = (4,5)
     return x/(TILE_SIZE[0]*16), y/(TILE_SIZE[1]*16)
 
+
 class FillOption:
     def __init__(self):
         self.start = -1 
@@ -52,7 +53,7 @@ class FillOption:
             else:
                 return 2 # UP
 
-    def terminate(self):
+    def terminate(self, env):
         """
         Terminate if 
         * Destination is reached.
