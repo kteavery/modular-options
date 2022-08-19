@@ -19,7 +19,7 @@ class FillOption:
         self.start = -1 
         self.destination = -1
     
-    def initiate(self):
+    def initiate(self, env):
         """
         To start the option,
         * Agent must be on a certain unpainted (TODO) tile (self.start). 
