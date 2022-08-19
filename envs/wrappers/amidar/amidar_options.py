@@ -71,6 +71,9 @@ class FillOption:
         x, y = json_to_tilepoint(json_position["x"], json_position["y"])
         position_junction = tilepoint_to_junctionpoint(x, y)
         
+        print("Terminate? ")
+        print(position_junction)
+        print(self.destination)
         if position_junction == self.destination:
             print("destination reached")
             return True

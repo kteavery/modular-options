@@ -6,3 +6,4 @@ experiment.sh
 envs/wrappers/__pycache__/
 envs/wrappers/amidar/__pycache__/
 storage/states/trajectories/
+out/
