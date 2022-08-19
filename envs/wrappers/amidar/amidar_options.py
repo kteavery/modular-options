@@ -50,15 +50,15 @@ class FillOption:
                 print("action: 3")
                 return 3 # RIGHT
             else:
-                print("action: 5")
-                return 5 # DOWN
+                print("action: 2")
+                return 2 # DOWN?
         else:
             if self.start-self.destination <= 31:
                 print("action: 4")
                 return 4 # LEFT
             else:
-                print("action: 2")
-                return 2 # UP
+                print("action: 5")
+                return 5 # UP?
 
     def terminate(self, env):
         """
@@ -73,8 +73,9 @@ class FillOption:
         
         print("Terminate? ")
         print(position_junction)
+        print(int(position_junction))
         print(self.destination)
-        if position_junction == self.destination:
+        if int(position_junction) == self.destination:
             print("destination reached")
             return True
         return False
