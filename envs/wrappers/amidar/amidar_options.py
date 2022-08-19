@@ -38,19 +38,26 @@ class FillOption:
             if possible[0] == position_junction:
                 self.start = possible[0]
                 self.destination = possible[1]
+                print("Starting option: ")
+                print(self.start)
+                print(self.destination)
                 return (self.start, self.destination)
         return None
 
     def get_action(self):
         if self.start < self.destination: 
             if self.destination-self.start <= 31:
+                print("action: 3")
                 return 3 # RIGHT
             else:
+                print("action: 5")
                 return 5 # DOWN
         else:
             if self.start-self.destination <= 31:
+                print("action: 4")
                 return 4 # LEFT
             else:
+                print("action: 2")
                 return 2 # UP
 
     def terminate(self, env):
@@ -65,5 +72,6 @@ class FillOption:
         position_junction = tilepoint_to_junctionpoint(x, y)
         
         if position_junction == self.destination:
+            print("destination reached")
             return True
         return False
