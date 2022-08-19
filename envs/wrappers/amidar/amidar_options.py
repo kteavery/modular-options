@@ -4,7 +4,7 @@ from toybox.interventions.amidar import AmidarIntervention, Amidar
 
 from abc import ABC, abstractmethod
 
-possible_options = [(25, 217)]
+possible_options = [(25, 217), (217, 25), (447, 639), (639, 447), (447, 255), (255, 447)]
 
 def tilepoint_to_junctionpoint(x, y):
     return (31-y)*32 + x
@@ -31,8 +31,8 @@ class FillOption:
         x, y = json_to_tilepoint(json_position["x"], json_position["y"])
         position_junction = tilepoint_to_junctionpoint(x, y)
         
-        print("Position:")
-        print(position_junction)
+        # print("Position:")
+        # print(position_junction)
         for possible in possible_options:
             if possible[0] == position_junction:
                 self.start = possible[0]
@@ -58,26 +58,11 @@ class FillOption:
         * Destination is reached.
         * TODO An enemy comes within 7 tiles.
         """
-        position = intervention.worldpoint_to_tilepoint(intervention.game.player.position)
-        position_junction = tilepoint_to_junctionpoint(position.tx, position.ty)
+        state = env.toybox.state_to_json()
+        json_position = state["player"]["position"]
+        x, y = json_to_tilepoint(json_position["x"], json_position["y"])
+        position_junction = tilepoint_to_junctionpoint(x, y)
+        
         if position_junction == self.destination:
             return True
         return False
-
-
-class AbstractOption: 
-    def __init__(self):
-        pass
-
-    @abstactmethod
-    def initiate(self):
-        pass
-
-    @abstactmethod
-    def get_action(self):
-        pass
-    
-    @abstactmethod
-    def terminate(self):
-        pass
-

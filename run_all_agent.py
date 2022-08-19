@@ -7,7 +7,7 @@ from envs.wrappers.all_toybox_wrapper import (
     ToyboxEnvironment,
     customAmidarResetWrapper,
 )
-from envs.wrappers.amidar import options
+from envs.wrappers.amidar import amidar_options
 import numpy as np
 from glob import glob
 
@@ -21,6 +21,7 @@ agent_replicate_num = 1
 test_episodes = 100
 nodelist = ""
 loadfile = False  # replace with specific path if continuing from checkpoint
+use_options = True
 # e.g. loadfile = "/.../snapshots"
 
 
@@ -28,7 +29,10 @@ def main(env_name, fam):
     all_options = None
     if env_name == "Amidar":
         custom_wrapper = customAmidarResetWrapper(0, -1, 3)
-        all_options = options.FillOption()
+        if use_options:
+            all_options = amidar_options.FillOption()
+        else: 
+            all_options = None
     else:
         raise ValueError(f"Unrecognized env_name: {env_name}")
 
