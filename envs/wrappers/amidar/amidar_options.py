@@ -1,6 +1,7 @@
 from ctoybox import Toybox, Input
 import toybox.interventions.amidar as amidar
 from toybox.interventions.amidar import AmidarIntervention, Amidar
+import math
 
 from abc import ABC, abstractmethod
 
@@ -73,9 +74,8 @@ class FillOption:
         
         print("Terminate? ")
         print(position_junction)
-        print(int(position_junction))
         print(self.destination)
-        if int(position_junction) == self.destination:
+        if math.isclose(position_junction, float(self.destination), abs_tol=5.0):
             print("destination reached")
             return True
         return False
